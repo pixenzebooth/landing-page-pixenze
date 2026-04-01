@@ -518,7 +518,9 @@ const Home = () => {
                                     </div>
                                     <h4 style={{ marginBottom: '0.5rem' }}>Windows</h4>
                                     <p style={{ fontSize: '0.85rem', marginBottom: '1.5rem' }}>Untuk PC & Laptop</p>
-                                    <button className="btn btn-dark" style={{ width: '100%', fontSize: '0.9rem' }}>Download .exe</button>
+                                    <a href="https://storage.pixenzebooth.com/PixenzeBooth%20Setup.exe">
+                                        <button className="btn btn-dark" style={{ width: '100%', fontSize: '0.9rem' }}>Download .exe</button>
+                                    </a>
                                 </motion.div>
 
                                 <motion.div whileHover={{ y: -5 }} className="premium-card" style={{ padding: '2rem 1.5rem', background: 'var(--bg-secondary)', border: 'none' }}>
