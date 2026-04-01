@@ -1,0 +1,428 @@
+@import url('https://fonts.googleapis.com/css2?family=Titan+One&family=Inter:wght@300;400;500;600;700;800;900&family=Outfit:wght@300;400;500;600;700;800;900&display=swap');
+
+:root {
+  /* Fonts */
+  --font-main: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  --font-title: "Outfit", sans-serif;
+  --font-logo: "Titan One", cursive;
+
+  /* Colors - Pixenze New Palette */
+  --color-primary: #d40000;     /* Sharp Red */
+  --color-primary-hover: #b00000;
+  --color-secondary: #ffcf00;   /* Bright Yellow */
+  --color-secondary-dark: #e6ba00;
+  --color-accent-blue: #042493;  /* Deep Navy */
+  --color-dark: #042493;
+  --color-dark-muted: #4a5b8a;
+  
+  --bg-primary: #fffff6;        /* Off-white Cream */
+  --bg-secondary: #f4f4e8;
+  --bg-dark: #042493;
+  
+  --text-main: #042493;
+  --text-muted: #5e6da3;
+  --text-secondary: #4a5b8a;
+  --text-light: #ffffff;
+  
+  --glass-bg: rgba(255, 255, 246, 0.7);
+  --glass-border: rgba(4, 36, 147, 0.1);
+  --glass-backdrop: blur(12px);
+
+  /* Shadows & Radius */
+  --shadow-sm: 0 2px 5px rgba(0,0,0,0.05);
+  --shadow-md: 0 4px 15px rgba(0,0,0,0.1);
+  --shadow-lg: 0 50px 100px -20px rgba(50,50,93,0.25), 0 30px 60px -30px rgba(0,0,0,0.3);
+  --shadow-premium: 0 15px 35px rgba(0,0,0,0.1), 0 5px 15px rgba(0,0,0,0.05);
+  
+  --radius-sm: 8px;
+  --radius-md: 16px;
+  --radius-lg: 24px;
+  --radius-full: 9999px;
+
+  /* Spacing */
+  --section-padding: clamp(4rem, 10vw, 8rem);
+  --max-width: 1200px;
+
+  /* Grid Pattern */
+  --grid-color: rgba(4, 36, 147, 0.05);
+  --grid-size: 40px;
+}
+
+/* ===================== RESET & BASE ===================== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-main);
+  background-color: var(--bg-primary);
+  color: var(--text-main);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+#root {
+  position: relative;
+  min-height: 100vh;
+}
+
+.app-container {
+  position: relative;
+  z-index: 10;
+  width: 100%;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+  transition: all 0.2s ease;
+}
+
+ul {
+  list-style: none;
+}
+
+/* ===================== TYPOGRAPHY ===================== */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-title);
+  font-weight: 700;
+  line-height: 1.1;
+  color: var(--color-dark);
+}
+
+h1 { font-size: clamp(2.5rem, 6vw, 4.5rem); }
+h2 { font-size: clamp(2rem, 5vw, 3rem); }
+h3 { font-size: 1.75rem; }
+
+p {
+  font-size: 1.125rem;
+  color: var(--text-muted);
+}
+
+.text-gradient {
+  color: var(--color-primary);
+  display: inline-block;
+  font-weight: 800;
+}
+
+.text-center { text-align: center; }
+
+/* ===================== UTILITIES ===================== */
+.container {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+.section {
+  padding: var(--section-padding) 0;
+  position: relative;
+}
+
+.flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ===================== MESH GRADIENT ===================== */
+.bg-mesh-gradient {
+  background-color: #ffffff;
+  background-image: 
+    radial-gradient(at 0% 0%, rgba(233, 61, 68, 0.08) 0, transparent 50%),
+    radial-gradient(at 100% 0%, rgba(252, 208, 14, 0.08) 0, transparent 50%),
+    radial-gradient(at 100% 100%, rgba(233, 61, 68, 0.05) 0, transparent 50%),
+    radial-gradient(at 0% 100%, rgba(252, 208, 14, 0.05) 0, transparent 50%);
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: -1;
+  pointer-events: none;
+}
+
+/* ===================== CARDS ===================== */
+.premium-card {
+  background: white;
+  border-radius: var(--radius-lg);
+  padding: 2.5rem;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  box-shadow: var(--shadow-sm);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.premium-card:hover {
+  transform: translateY(-8px);
+  box-shadow: var(--shadow-premium);
+}
+
+.glass-card {
+  background: var(--glass-bg);
+  backdrop-filter: var(--glass-backdrop);
+  -webkit-backdrop-filter: var(--glass-backdrop);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-lg);
+}
+
+/* ===================== BUTTONS ===================== */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.75rem 1.5rem;
+  border-radius: var(--radius-full);
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  gap: 0.5rem;
+  border: none;
+  outline: none;
+}
+
+.btn-primary {
+  background-color: var(--color-primary);
+  color: white;
+}
+
+.btn-primary:hover {
+  background-color: var(--color-primary-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 7px 14px rgba(50,50,93,0.1), 0 3px 6px rgba(0,0,0,0.08);
+}
+
+.btn-secondary {
+  background-color: var(--color-secondary);
+  color: var(--color-dark);
+}
+
+.btn-secondary:hover {
+  background-color: var(--color-secondary-dark);
+  transform: translateY(-2px);
+}
+
+.btn-outline {
+  background-color: transparent;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  color: var(--text-main);
+}
+
+.btn-outline:hover {
+  border-color: var(--color-dark);
+  background-color: rgba(0, 0, 0, 0.02);
+}
+
+.btn-dark {
+  background-color: var(--color-dark);
+  color: white;
+}
+
+.btn-dark:hover {
+  background-color: #1a3a5a;
+  transform: translateY(-2px);
+}
+
+/* ===================== BADGES ===================== */
+.premium-badge {
+  display: inline-flex;
+  padding: 0.5rem 1.25rem;
+  background: rgba(233, 61, 68, 0.1);
+  color: var(--color-primary);
+  font-weight: 700;
+  border-radius: var(--radius-full);
+  font-size: 0.875rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.premium-badge-yellow {
+  background: rgba(252, 208, 14, 0.1);
+  color: #c9a500;
+}
+
+/* ===================== GRID SYSTEMS ===================== */
+.grid-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+}
+
+.grid-3 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+}
+
+.bento-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-auto-rows: minmax(180px, auto);
+  gap: 1.5rem;
+}
+
+.col-span-2 { grid-column: span 2; }
+.row-span-2 { grid-row: span 2; }
+
+/* ===================== ANIMATIONS ===================== */
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+  100% { transform: translateY(0px); }
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+@keyframes glow-pulse {
+  0% { box-shadow: 0 0 5px rgba(233, 61, 68, 0.2), 0 0 10px rgba(233, 61, 68, 0.1); }
+  50% { box-shadow: 0 0 20px rgba(233, 61, 68, 0.4), 0 0 30px rgba(233, 61, 68, 0.2); }
+  100% { box-shadow: 0 0 5px rgba(233, 61, 68, 0.2), 0 0 10px rgba(233, 61, 68, 0.1); }
+}
+
+.glow-pulse {
+  animation: glow-pulse 3s infinite ease-in-out;
+}
+
+.avatar-stack {
+  display: flex;
+  align-items: center;
+}
+
+.avatar-stack img, .avatar-stack .avatar-placeholder {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 2px solid white;
+  margin-left: -12px;
+  background: var(--bg-secondary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 10px;
+  font-weight: 700;
+  color: var(--color-primary);
+}
+
+.avatar-stack img:first-child, .avatar-stack .avatar-placeholder:first-child {
+  margin-left: 0;
+}
+
+.reveal-on-scroll {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.reveal-active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ===================== RESPONSIVE ===================== */
+@media (max-width: 1024px) {
+  .grid-3, .bento-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .grid-2, .grid-3, .bento-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .col-span-2 { grid-column: span 1; }
+  
+  .section {
+    padding: 4rem 0;
+  }
+}
+
+/* ===================== STRIPE STYLE ACCENTS ===================== */
+.stripe-accent-line {
+  height: 4px;
+  width: 60px;
+  background: var(--color-primary);
+  margin-bottom: 1.5rem;
+  border-radius: var(--radius-full);
+}
+
+/* ===================== CONTACT PAGE ===================== */
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: flex-start;
+}
+
+.icon-box-accent {
+  background: rgba(212, 0, 0, 0.1) !important;
+  color: var(--color-primary) !important;
+}
+
+.glass-panel {
+  background: var(--glass-bg);
+  backdrop-filter: var(--glass-backdrop);
+  -webkit-backdrop-filter: var(--glass-backdrop);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
+}
+
+.form-label {
+  font-family: var(--font-title);
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: var(--color-dark);
+}
+
+.form-input {
+  width: 100%;
+  padding: 1rem;
+  border-radius: var(--radius-md);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  background: rgba(255, 255, 255, 0.5);
+  font-family: var(--font-main);
+  transition: all 0.2s;
+}
+
+.form-input:focus {
+  outline: none;
+  border-color: var(--color-primary);
+  background: white;
+  box-shadow: 0 0 0 4px rgba(212, 0, 0, 0.05);
+}
+
+.text-stroke-white {
+  -webkit-text-stroke: 1px var(--bg-primary);
+}
+
+.text-accent {
+  color: var(--color-primary);
+}
+
+.text-shadow-hard {
+  text-shadow: 2px 2px 0 rgba(0, 0, 0, 0.05);
+}
+
+@media (max-width: 1024px) {
+  .contact-grid {
+    gap: 2rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .contact-grid {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+}
